@@ -27,17 +27,17 @@ a Mikrotik router becomes the gateway to isolate it.
 | Mgmt PC  | i7 11700k, 32GB, manages via browser + SSH |
 
 ## Storage
-- local / local-lvm (SSD): ...
+- local / local-lvm (SSD): vm 100 disk: 32GiB, vm 101 disk: 60GiB
 - hdd-cold (HDD, Directory): ISOs, backups, templates
 
 ## Network (current)
-Subnet: 192.168.1, host IP: 192.168.1.10, gateway: 192.168.1.1. 
+Subnet: 192.168.1.0/24, host IP: 192.168.1.10, gateway: 192.168.1.1. 
 NOTE: will change when Mikrotik becomes gateway (S2 prep).
 
 ## Virtual Machines
 | ID | Name | OS | Role | vCPU/RAM | IP | Status |
-| 100 | ubuntu-server | Ubuntu 26.04 | test/services | 2/2GB | 192.168.1.128 | running |
-| 101 | windows-server | Windows server 2025 | test/services | 2/2GB | 192.168.1.128 | running |
+| 100 | ubuntu-server | Ubuntu 26.04 | test/services | 2/2GB | 192.168.1.126 | running |
+| 101 | windows-server | Windows server 2025 | test/services | 2/4GB | 192.168.1.128 | running |
 
 ## Design decisions (the why)
 - ext4/LVM-thin instead of ZFS: Because ZFS is great for many things and more powerfull, but in this case we only have 16GB, so ext4/LVM-thin requires less ram
@@ -45,4 +45,21 @@ NOTE: will change when Mikrotik becomes gateway (S2 prep).
 - Mikrotik as gateway, lab isolated: This way it doesn't affect the home LAN, and we can make changes and configure as desired without interceding.
 
 ## Roadmap
-S1...S10 in one line each.
+### Block A — bulletproof (S1–S6)
+- S1: Proxmox VE + Mikrotik as gateway (NAT/DHCP); Ubuntu + Windows VMs deployed; routing refresher.
+- S2: Managed switch + 3 VLANs (office/servers/mgmt), 802.1Q trunk, inter-VLAN routing on Mikrotik, STP demonstrated.
+- S3: pfSense VM with deny-all + permit-needed policy, VLAN tagging, WireGuard reachable from a phone; AZ-900 study begins.
+- S4: Windows Server promoted to Domain Controller; AD + DNS + DHCP, 10–15 users + 3 OUs; Windows client joined to the domain.
+- S5: GPOs (password policy, drive mapping, USB lockdown); PowerShell to bulk-create users from a CSV + a basic audit script.
+- S6: AZ-900 practice exams + official exam; CV in ES + EN; LinkedIn finalized.
+
+### Block B — prioritized (S7–S10)
+- S7: Veeam Community + backup repo on the HDD; back up 3 critical VMs; real restore test (3-2-1 rule).
+- S8: Ubuntu Server over SSH with Nginx + MariaDB + Nextcloud/WordPress; HTTPS via Cloudflare Tunnel; hardening (fail2ban, ufw, SSH keys only).
+- S9: Mini-OT lab: OpenPLC ladder logic, Modbus TCP server, Wireshark capture analyzed, isolated OT VLAN with an IT→OT firewall rule.
+- S10: Integrator PDF (8–10 pages) for an 80-employee industrial SME; segmented IT/OT network diagram; repo reorganized (/docs, /scripts, /configs, /diagrams).
+
+### Block C — optional stretch (August, pick one)
+- C1: Ignition SCADA + full Purdue model (HMI driving the simulated PLC).
+- C2: VMware ESXi 8 (nested) + a Proxmox vs ESXi comparison.
+- C3: Grafana + Prometheus monitoring ("lab health" dashboard).
