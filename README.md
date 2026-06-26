@@ -31,7 +31,7 @@ a Mikrotik router becomes the gateway to isolate it.
 - hdd-cold (HDD, Directory): ISOs, backups, templates
 
 ## Network (current)
-Subnet: 192.168.1.0/24, host IP: 192.168.1.10, gateway: 192.168.1.1. 
+Subnet: 192.168.1.0/24, host IP: 192.168.1.116, gateway: 192.168.1.1. 
 NOTE: will change when Mikrotik becomes gateway (S2 prep).
 
 ## Virtual Machines
