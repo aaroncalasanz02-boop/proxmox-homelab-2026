@@ -107,26 +107,16 @@ the bridge tags on the VM's behalf, exactly like an access port tags for a physi
   `vmbr0.99`), never on the raw trunk — an IP with no tag would fall into the native
   999 and go nowhere.
 
-## Roadmap
 
-### Block A — bulletproof (S1–S6)
-- **S1 ✅** — Proxmox VE + Mikrotik as gateway (NAT/DHCP); Ubuntu + Windows VMs deployed; routing refresher.
-- **S2 ✅** — Managed switch + 3 VLANs (office/servers/mgmt), 802.1Q trunk, inter-VLAN routing on Mikrotik, STP demonstrated, Proxmox integrated (VLAN-aware bridge, tagged mgmt, tagged VMs).
-- **S3** — pfSense/RouterOS deny-all + permit-needed policy, VLAN tagging.
-- **S4** — Windows Server promoted to Domain Controller; AD + DNS + DHCP, 10–15 users + 3 OUs; Windows client joined to the domain.
-- **S5** — GPOs (password policy, drive mapping, USB lockdown); PowerShell to bulk-create users from a CSV + a basic audit script.
+### Block A (S1–S6)
+- **S1 ** — Proxmox VE + Mikrotik as gateway (NAT/DHCP); Ubuntu + Windows VMs deployed; routing refresher.
+- **S2 ** — Managed switch + 3 VLANs (office/servers/mgmt), 802.1Q trunk, inter-VLAN routing on Mikrotik, STP demonstrated, Proxmox integrated (VLAN-aware bridge, tagged mgmt, tagged VMs).
+- **S3 ** — pfSense/RouterOS deny-all + permit-needed policy, VLAN tagging.
+- **S4 ** — Windows Server promoted to Domain Controller; AD + DNS + DHCP, 10–15 users + 3 OUs; Windows client joined to the domain.
+- **S5 ** — GPOs (password policy, drive mapping, USB lockdown); PowerShell to bulk-create users from a CSV + a basic audit script.
 
 
-### Block B — prioritized (S7–S10)
-- **S7** — Veeam Community + backup repo on the HDD; back up 3 critical VMs; real restore test (3-2-1 rule).
-- **S8** — Ubuntu Server over SSH with Nginx + MariaDB + Nextcloud/WordPress; HTTPS via Cloudflare Tunnel; hardening (fail2ban, ufw, SSH keys only).
-- **S9** — Mini-OT lab: OpenPLC ladder logic, Modbus TCP server, Wireshark capture analyzed, isolated OT VLAN with an IT→OT firewall rule.
-- **S10** — Integrator PDF (8–10 pages) for an 80-employee industrial SME; segmented IT/OT network diagram; repo reorganized (/docs, /scripts, /configs, /diagrams).
 
-### Block C — optional stretch (August, pick one)
-- **C1** — Ignition SCADA + full Purdue model (HMI driving the simulated PLC).
-- **C2** — VMware ESXi 8 (nested) + a Proxmox vs ESXi comparison.
-- **C3** — Grafana + Prometheus monitoring ("lab health" dashboard).
 
 ## S2 troubleshooting log
 
