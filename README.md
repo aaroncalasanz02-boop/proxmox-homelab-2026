@@ -112,10 +112,10 @@ the bridge tags on the VM's behalf, exactly like an access port tags for a physi
 ### Block A — bulletproof (S1–S6)
 - **S1 ✅** — Proxmox VE + Mikrotik as gateway (NAT/DHCP); Ubuntu + Windows VMs deployed; routing refresher.
 - **S2 ✅** — Managed switch + 3 VLANs (office/servers/mgmt), 802.1Q trunk, inter-VLAN routing on Mikrotik, STP demonstrated, Proxmox integrated (VLAN-aware bridge, tagged mgmt, tagged VMs).
-- **S3** — pfSense/RouterOS deny-all + permit-needed policy, VLAN tagging, WireGuard reachable from a phone; AZ-900 study begins.
+- **S3** — pfSense/RouterOS deny-all + permit-needed policy, VLAN tagging.
 - **S4** — Windows Server promoted to Domain Controller; AD + DNS + DHCP, 10–15 users + 3 OUs; Windows client joined to the domain.
 - **S5** — GPOs (password policy, drive mapping, USB lockdown); PowerShell to bulk-create users from a CSV + a basic audit script.
-- **S6** — AZ-900 practice exams + official exam; CV in ES + EN; LinkedIn finalized.
+
 
 ### Block B — prioritized (S7–S10)
 - **S7** — Veeam Community + backup repo on the HDD; back up 3 critical VMs; real restore test (3-2-1 rule).
